@@ -1,0 +1,15 @@
+React:
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    npx create-next-app . --ts
+    npm run dev
+    npm i @mui/material@5.10.2 @emotion/react@11.10.0 @emotion/styled@11.10.0
+Python Django:
+    python -m venv .venv
+    pip install django
+    django-admin startproject myteacher .
+    python manage.py runserver
+    python manage.py startapp app
+    pip install djangorestframework
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py migrate
