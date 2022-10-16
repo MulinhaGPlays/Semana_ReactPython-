@@ -13,3 +13,4 @@ Python Django:
     python manage.py makemigrations
     python manage.py migrate
     python manage.py migrate
+    npm i axios@0.27.2

@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.status import (HTTP_200_OK, HTTP_201_CREATED,
                                    HTTP_400_BAD_REQUEST)
@@ -8,6 +8,10 @@ from teacher.serializers import (Aula, AulaSerializer, CadastrarAulaSerializer,
                                  ProfessorSerializer)
 
 
+class HomeAPIView(APIView):
+    def get(self, request, format=None):
+        return Response({"message": "olá, adicione uma rota"}, HTTP_200_OK)
+
 class ProfessorAPIView(APIView):
     def get(self, request, format=None):
         professores = Professor.objects.all()
@@ -16,7 +20,8 @@ class ProfessorAPIView(APIView):
     
 class CadastrarAulaAPIView(APIView):
     def post(self, request, id, format=None):
-        professor = get_list_or_404(Professor, id=id)
+        professor = get_object_or_404(Professor, id=id)
+        print(professor)
         serializer = CadastrarAulaSerializer(data=request.data)
         if serializer.is_valid():
             aula = Aula(
