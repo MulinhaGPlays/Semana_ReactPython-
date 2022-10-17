@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'teacher.apps.TeacherConfig',
     'app.apps.AppConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,14 +131,45 @@ REST_FRAMEWORK = {
     "COERCE_DECIMAL_TO_STRING": False
 }
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ['*']
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
 CORS_ORIGIN_WHITELIST = (
-    'http://localhost:8000',
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:8000',
-    'http//192.168.0.7:8000',
-    'http//192.168.0.7:3000',
-    'http//0.0.0.0:8000',
-    'http//0.0.0.0:3000',
+  'http://localhost:8000',
+  'http://localhost:3000',
+  'http://127.0.0.1:8000',
+  'http://127.0.0.1:3000',
+  'http://0.0.0.0:3000',
+  'http://0.0.0.0:8000',
 )
+
+CORS_ALLOWED_ORIGINS = [
+  'http://localhost:8000',
+  'http://localhost:3000',
+  'http://127.0.0.1:8000',
+  'http://127.0.0.1:3000',
+  'http://0.0.0.0:3000',
+  'http://0.0.0.0:8000',
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+  'http://localhost:8000',
+  'http://localhost:3000',
+  'http://127.0.0.1:8000',
+  'http://127.0.0.1:3000',
+  'http://0.0.0.0:3000',
+  'http://0.0.0.0:8000',
+]

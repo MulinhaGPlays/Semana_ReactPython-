@@ -19,5 +19,6 @@ from teacher.views import CadastrarAulaAPIView, HomeAPIView, ProfessorAPIView
 urlpatterns = [
     path('', HomeAPIView.as_view()),
     path('professores/', ProfessorAPIView.as_view()),
+    path('professores', ProfessorAPIView.as_view()),
     path(f'professores/<int:id>/aulas', CadastrarAulaAPIView.as_view()),
 ]

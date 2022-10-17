@@ -10,7 +10,7 @@ export function useIndex() {
     const [mensagem, setMensagem] = useState('');
 
     useEffect(() => {
-        ApiService.get('/professores/').then((resposta) => {
+        ApiService.get('/professores').then((resposta) => {
             setListaProfessores(resposta.data)
         })
     }, [])
@@ -45,6 +45,7 @@ export function useIndex() {
         setNome('')
         setEmail('')
     }
+
 
     return {
         listaProfessores,

@@ -21,7 +21,6 @@ class ProfessorAPIView(APIView):
 class CadastrarAulaAPIView(APIView):
     def post(self, request, id, format=None):
         professor = get_object_or_404(Professor, id=id)
-        print(professor)
         serializer = CadastrarAulaSerializer(data=request.data)
         if serializer.is_valid():
             aula = Aula(

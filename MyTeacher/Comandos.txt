@@ -3,6 +3,7 @@ React:
     npx create-next-app . --ts
     npm run dev
     npm i @mui/material@5.10.2 @emotion/react@11.10.0 @emotion/styled@11.10.0
+    npm i axios@0.27.2
 Python Django:
     python -m venv .venv
     pip install django
@@ -12,5 +13,3 @@ Python Django:
     pip install djangorestframework
     python manage.py makemigrations
     python manage.py migrate
-    python manage.py migrate
-    npm i axios@0.27.2
