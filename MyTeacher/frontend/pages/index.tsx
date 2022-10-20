@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         onSelect={(professor) => setProfessorSelecionado(professor)}></Lista>
       </Box>
 
-      <Dialog onClose={() => setProfessorSelecionado(null)} open={professorSelecionado != null} fullWidth PaperProps={{sx: {p: 5 }}}>
+      <Dialog onClose={() => setProfessorSelecionado(null,)} open={professorSelecionado != null} fullWidth PaperProps={{sx: {p: 5 }}}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField 
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
       message={mensagem}
       onClose={() => setMensagem('')}
       autoHideDuration={2500}
-      open={mensagem.length > 0} />
+      open={mensagem != ''} />
     </>
   )
 }

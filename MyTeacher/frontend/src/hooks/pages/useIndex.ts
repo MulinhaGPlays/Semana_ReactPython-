@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Professor } from "../../@types/professor";
-import { ApiService } from "../../services/ApiService";
 
 export function useIndex() {
     const [listaProfessores, setListaProfessores] = useState<Professor[]>([]);
@@ -10,8 +9,13 @@ export function useIndex() {
     const [mensagem, setMensagem] = useState('');
 
     useEffect(() => {
-        ApiService.get('/professores').then((resposta) => {
-            setListaProfessores(resposta.data)
+        fetch("http://localhost:8000/professores/", {
+            method: "GET",
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setListaProfessores(data)
         })
     }, [])
 
@@ -22,9 +26,10 @@ export function useIndex() {
     function marcarAula(){
         if (professorSelecionado != null){
             if (validarDadosAula()){
-                ApiService.post('/professores/'+'professorSelecionado.id'+'/aulas', {
-                    nome,
-                    email
+                fetch("http://localhost:8000/professores/"+ professorSelecionado.id +'/aulas', {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({name: nome, email: email})
                 }).then(()=> {
                     setProfessorSelecionado(null)
                     setMensagem('cadastrado com sucesso')
